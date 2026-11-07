@@ -42,7 +42,7 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 min-h-screen text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-rose-200 selection:text-rose-900">
+<body class="bg-gradient-to-br from-emerald-50 via-green-50 to-rose-50 min-h-screen text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-emerald-200 selection:text-emerald-900">
 
     <!-- HIDDEN BACKGROUND AUDIO (no visible player) -->
     <!-- Upload your audio to GitHub in the same folder as index.html and name it "music.mp3" -->
@@ -52,11 +52,11 @@
 
     <!-- FLOATING TOP-RIGHT MUSIC BUTTON -->
     <div class="fixed top-4 right-4 z-50">
-        <button id="music-toggle-btn" onclick="toggleAudio()" class="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-rose-200 shadow-lg text-rose-600 hover:bg-rose-50 transition-all duration-300">
+        <button id="music-toggle-btn" onclick="toggleAudio()" class="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-emerald-200 shadow-lg text-emerald-600 hover:bg-emerald-50 transition-all duration-300">
             <span id="music-icon" class="flex items-center justify-center">
-                <i data-lucide="disc" class="w-5 h-5 text-rose-500"></i>
+                <i data-lucide="disc" class="w-5 h-5 text-emerald-500"></i>
             </span>
-            <span id="music-status-text" class="text-xs font-semibold tracking-wide text-rose-700 hidden sm:inline">Play Music</span>
+            <span id="music-status-text" class="text-xs font-semibold tracking-wide text-emerald-700 hidden sm:inline">Play Music</span>
         </button>
     </div>
 
@@ -65,7 +65,7 @@
 
     <!-- HEADER / HERO -->
     <header class="relative z-10 pt-10 pb-6 text-center px-4">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100/80 border border-rose-200/60 backdrop-blur-sm text-rose-700 text-xs sm:text-sm font-medium shadow-sm mb-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200/60 backdrop-blur-sm text-emerald-700 text-xs sm:text-sm font-medium shadow-sm mb-4">
             <i data-lucide="heart" class="w-4 h-4 fill-rose-500 text-rose-500 animate-pulse"></i>
             <span>11th Monthsary Special</span>
         </div>
@@ -73,70 +73,70 @@
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight">
             Happy Monthsary My <span id="dynamic-nickname" class="text-rose-600 nickname-visible">Love</span>
         </h1>
-        <p class="text-xs sm:text-sm text-rose-900/70 mt-2 font-medium">Password ka ba? di kasi kita makalimutan eh, yiee uwow</p>
+        <p class="text-xs sm:text-sm text-emerald-900/70 mt-2 font-medium">Password ka ba? di kasi kita makalimutan eh, yiee uwow</p>
     </header>
 
     <!-- MAIN CONTENT -->
     <main class="relative z-10 max-w-2xl mx-auto px-4 w-full space-y-8 my-auto py-4">
 
         <!-- TIME SPENT TOGETHER COUNTER CARD -->
-        <section class="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-100 text-center relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-rose-200/40 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-pink-200/40 rounded-full blur-2xl pointer-events-none"></div>
+        <section class="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-100 text-center relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-200/40 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-green-200/40 rounded-full blur-2xl pointer-events-none"></div>
             
-            <h2 class="text-xs sm:text-sm uppercase tracking-widest text-rose-800/80 font-bold mb-6 flex items-center justify-center gap-2">
-                <i data-lucide="clock" class="w-4 h-4 text-rose-500"></i>
+            <h2 class="text-xs sm:text-sm uppercase tracking-widest text-emerald-800/80 font-bold mb-6 flex items-center justify-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-emerald-500"></i>
                 Time Spent Together
             </h2>
 
             <div class="grid grid-cols-4 gap-2 sm:gap-4">
                 <!-- DAYS -->
-                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
-                    <span id="days" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600">00</span>
-                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Days</span>
+                <div class="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="days" class="text-2xl sm:text-4xl font-bold font-mono text-emerald-600">00</span>
+                    <span class="text-[10px] sm:text-xs text-emerald-900/70 font-semibold uppercase mt-1">Days</span>
                 </div>
                 <!-- HOURS -->
-                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
-                    <span id="hours" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600">00</span>
-                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Hours</span>
+                <div class="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="hours" class="text-2xl sm:text-4xl font-bold font-mono text-emerald-600">00</span>
+                    <span class="text-[10px] sm:text-xs text-emerald-900/70 font-semibold uppercase mt-1">Hours</span>
                 </div>
                 <!-- MINUTES -->
-                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
-                    <span id="minutes" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600">00</span>
-                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Minutes</span>
+                <div class="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="minutes" class="text-2xl sm:text-4xl font-bold font-mono text-emerald-600">00</span>
+                    <span class="text-[10px] sm:text-xs text-emerald-900/70 font-semibold uppercase mt-1">Minutes</span>
                 </div>
                 <!-- SECONDS -->
-                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
-                    <span id="seconds" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600 animate-pulse">00</span>
-                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Seconds</span>
+                <div class="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="seconds" class="text-2xl sm:text-4xl font-bold font-mono text-emerald-600 animate-pulse">00</span>
+                    <span class="text-[10px] sm:text-xs text-emerald-900/70 font-semibold uppercase mt-1">Seconds</span>
                 </div>
             </div>
             
-            <p class="text-xs text-rose-800/60 mt-4 italic font-medium">Since December 8, 2025</p>
+            <p class="text-xs text-emerald-800/60 mt-4 italic font-medium">Since December 8, 2025</p>
         </section>
 
         <!-- ENVELOPE CARD (CLICK TO OPEN) -->
-        <div id="envelope-card" onclick="openLetter()" class="cursor-pointer bg-gradient-to-r from-rose-500 to-pink-500 rounded-3xl p-6 sm:p-8 shadow-xl text-white text-center transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+        <div id="envelope-card" onclick="openLetter()" class="cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl p-6 sm:p-8 shadow-xl text-white text-center transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
             <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex flex-col items-center justify-center space-y-3">
                 <div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
                     <i data-lucide="mail-open" class="w-7 h-7 text-white"></i>
                 </div>
                 <h3 class="text-lg sm:text-xl font-semibold">Here's my letter for you lablab ko! ❤️</h3>
-                <p class="text-xs text-rose-100 bg-white/10 px-3 py-1 rounded-full font-medium">Pipindutin mo o pipindutin mo? 😁</p>
+                <p class="text-xs text-emerald-50 bg-white/10 px-3 py-1 rounded-full font-medium">Pipindutin mo o pipindutin mo? 😁</p>
             </div>
         </div>
 
         <!-- LOVE LETTER DISPLAY (PARCHMENT STYLE) -->
         <div id="letter-display" class="hidden opacity-0 translate-y-4 transition-all duration-700 ease-out">
-            <section class="bg-amber-50/90 border border-amber-200/80 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+            <section class="bg-lime-50/90 border border-lime-200/80 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
                 <!-- Decorative Top Ribbon -->
-                <div class="flex items-center justify-between border-b border-amber-200/60 pb-4 mb-6">
+                <div class="flex items-center justify-between border-b border-lime-200/60 pb-4 mb-6">
                     <div class="flex items-center gap-2 text-rose-900 font-serif font-semibold text-sm">
                         <i data-lucide="heart" class="w-4 h-4 fill-rose-600 text-rose-600"></i>
                         <span>For my babi</span>
                     </div>
-                    <span class="text-xs text-amber-900/60 font-medium">November 8, 2026</span>
+                    <span class="text-xs text-lime-900/60 font-medium">November 8, 2026</span>
                 </div>
 
                 <!-- Letter Body -->
@@ -145,7 +145,7 @@
                     <p id="letter-body" class="whitespace-pre-line text-slate-700">
 Panis i made this website for you hehehehe I just wanna say na thank you sa lahat, thankyou sa pagbigay saakin ng chance na bumawi lagi pag nagkakamali ako im not a good boyfriend also not the great nasa gitna lang but you really proved na natiis mo ako kahit lalo na ngayon im starting this source of income side hussle salamat kasi kahit papaano naiintindihan mo ako na im doing this for us babi im really sorry na i cant provide for you YET pero i promise SOON magbabago ang lahat babi im just starting palang sabi nga diba "Kung kaya nila, kaya din natin" pare parehas lang tayong tao eh, anyways Mahal na mahal kita babi despite the misunderstandings babi ikaw lang talaga ang nasa puso at isip ko and i want this to be more longer mamahalin kita until the end of time im here always for you lablab ko. I will always love you forever and ever I love you to the moon and back, MWAHHHH!!
                     </p>
-                    <div class="pt-4 border-t border-amber-200/60 space-y-1">
+                    <div class="pt-4 border-t border-lime-200/60 space-y-1">
                         <p id="letter-closing" class="italic text-rose-800">Forever yours,</p>
                         <p id="letter-signature" class="font-handwriting text-3xl text-rose-600 font-semibold">You're Future Husband, Hans</p>
                     </div>
@@ -156,10 +156,10 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
     </main>
 
     <!-- FOOTER -->
-    <footer class="text-center py-6 text-xs text-rose-900/60 relative z-20 font-medium">
+    <footer class="text-center py-6 text-xs text-emerald-900/60 relative z-20 font-medium">
         Made with Chat GPT
     </footer>
-    <footer class="text-center py-6 text-xs text-rose-900/60 relative z-10 font-medium">
+    <footer class="text-center py-6 text-xs text-emerald-900/60 relative z-10 font-medium">
         Charot ako gumawa nito lablab hehehe mwah
     </footer>
     <!-- JAVASCRIPT LOGIC -->
@@ -296,6 +296,7 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
                     this.speedY = Math.random() * 1.2 + 0.6;
                     this.speedX = Math.sin(Math.random() * Math.PI) * 0.8;
                     this.opacity = Math.random() * 0.5 + 0.3;
+                    this.color = Math.random() < 0.6 ? '#fb7185' : '#6ee7b7';
                     this.rotation = Math.random() * Math.PI * 2;
                     this.rotSpeed = (Math.random() - 0.5) * 0.02;
                 }
@@ -315,7 +316,7 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
                     ctx.translate(this.x, this.y);
                     ctx.rotate(this.rotation);
                     ctx.globalAlpha = this.opacity;
-                    ctx.fillStyle = '#fb7185';
+                    ctx.fillStyle = this.color;
                     ctx.beginPath();
                     const topCurveHeight = this.size * 0.3;
                     ctx.moveTo(0, topCurveHeight);
