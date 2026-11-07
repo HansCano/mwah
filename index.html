@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Monthsary My Love</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-handwriting {
+            font-family: 'Dancing Script', cursive;
+        }
+        .nickname-hidden {
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+        .nickname-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 min-h-screen text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-rose-200 selection:text-rose-900">
+
+    <!-- CANVAS FLOATING HEARTS BACKGROUND -->
+    <canvas id="heart-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- HEADER / HERO -->
+    <header class="relative z-10 pt-10 pb-6 text-center px-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100/80 border border-rose-200/60 backdrop-blur-sm text-rose-700 text-xs sm:text-sm font-medium shadow-sm mb-4">
+            <i data-lucide="heart" class="w-4 h-4 fill-rose-500 text-rose-500 animate-pulse"></i>
+            <span>Our Special Anniversary</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight">
+            Happy Monthsary My <span id="dynamic-nickname" class="text-rose-600 nickname-visible">Love</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-rose-900/70 mt-2 font-medium">Every second with you is a gift I cherish forever.</p>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10 max-w-2xl mx-auto px-4 w-full space-y-8 my-auto py-4">
+
+        <!-- TIME SPENT TOGETHER COUNTER CARD -->
+        <section class="bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-100 text-center relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-rose-200/40 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-pink-200/40 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <h2 class="text-xs sm:text-sm uppercase tracking-widest text-rose-800/80 font-bold mb-6 flex items-center justify-center gap-2">
+                <i data-lucide="clock" class="w-4 h-4 text-rose-500"></i>
+                Time Spent Together
+            </h2>
+
+            <div class="grid grid-cols-4 gap-2 sm:gap-4">
+                <!-- DAYS -->
+                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="days" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600">00</span>
+                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Days</span>
+                </div>
+                <!-- HOURS -->
+                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="hours" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600">00</span>
+                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Hours</span>
+                </div>
+                <!-- MINUTES -->
+                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="minutes" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600">00</span>
+                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Minutes</span>
+                </div>
+                <!-- SECONDS -->
+                <div class="bg-rose-50/80 border border-rose-100 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center">
+                    <span id="seconds" class="text-2xl sm:text-4xl font-bold font-mono text-rose-600 animate-pulse">00</span>
+                    <span class="text-[10px] sm:text-xs text-rose-900/70 font-semibold uppercase mt-1">Seconds</span>
+                </div>
+            </div>
+            
+            <p class="text-xs text-rose-800/60 mt-4 italic font-medium">Since December 8, 2025</p>
+        </section>
+
+        <!-- ENVELOPE CARD (CLICK TO OPEN) -->
+        <div id="envelope-card" onclick="openLetter()" class="cursor-pointer bg-gradient-to-r from-rose-500 to-pink-500 rounded-3xl p-6 sm:p-8 shadow-xl text-white text-center transform hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="flex flex-col items-center justify-center space-y-3">
+                <div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+                    <i data-lucide="mail-open" class="w-7 h-7 text-white"></i>
+                </div>
+                <h3 class="text-lg sm:text-xl font-semibold">Here's my letter for you lablab ko! ❤️</h3>
+                <p class="text-xs text-rose-100 bg-white/10 px-3 py-1 rounded-full font-medium">Tap to open your message</p>
+            </div>
+        </div>
+
+        <!-- LOVE LETTER DISPLAY (PARCHMENT STYLE) -->
+        <div id="letter-display" class="hidden opacity-0 translate-y-4 transition-all duration-700 ease-out">
+            <section class="bg-amber-50/90 border border-amber-200/80 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                <!-- Decorative Top Ribbon -->
+                <div class="flex items-center justify-between border-b border-amber-200/60 pb-4 mb-6">
+                    <div class="flex items-center gap-2 text-rose-900 font-serif font-semibold text-sm">
+                        <i data-lucide="heart" class="w-4 h-4 fill-rose-600 text-rose-600"></i>
+                        <span>For my babi</span>
+                    </div>
+                    <span class="text-xs text-amber-900/60 font-medium">Dec 8, 2025</span>
+                </div>
+
+                <!-- Letter Body -->
+                <div class="space-y-4 font-serif text-slate-800 text-sm sm:text-base sm:leading-relaxed">
+                    <p id="letter-greeting" class="font-bold text-base sm:text-lg text-rose-900">HAPPY 11TH MONTHSARY BABIIII!!!</p>
+                    <p id="letter-body" class="whitespace-pre-line text-slate-700">
+Panis i made this website for you hehehehe I just wanna say na thank you sa lahat, thankyou sa pagbigay saakin ng chance na bumawi lagi pag nagkakamali ako im not a good boyfriend also not the great nasa gitna lang but you really proved na natiis mo ako kahit lalo na ngayon im starting this source of income side hussle salamat kasi kahit papaano naiintindihan mo ako na im doing this for us babi im really sorry na i cant provide for you YET pero i promise SOON magbabago ang lahat babi im just starting palang sabi nga diba "Kung kaya nila, kaya din natin" pare parehas lang tayong tao eh, anyways Mahal na mahal kita babi despite the misunderstandings babi ikaw lang talaga ang nasa puso at isip ko and i want this to be more longer mamahalin kita until the end of time im here always for you lablab ko. I love you to the moon and back, MWAHHHH!!
+                    </p>
+                    <div class="pt-4 border-t border-amber-200/60 space-y-1">
+                        <p id="letter-closing" class="italic text-rose-800">Forever yours,</p>
+                        <p id="letter-signature" class="font-handwriting text-3xl text-rose-600 font-semibold">You're Future Husband, Hans</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 text-xs text-rose-900/60 relative z-20 font-medium">
+        Made with ❤️ for my love
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // NICKNAMES CYCLING
+        const nicknames = ['Love', 'Lablab', 'Babi', 'Wifey', 'Lovey', 'Honey'];
+        let nicknameIndex = 0;
+        const nicknameEl = document.getElementById('dynamic-nickname');
+
+        setInterval(() => {
+            if (!nicknameEl) return;
+            nicknameEl.classList.remove('nickname-visible');
+            nicknameEl.classList.add('nickname-hidden');
+
+            setTimeout(() => {
+                nicknameIndex = (nicknameIndex + 1) % nicknames.length;
+                nicknameEl.textContent = nicknames[nicknameIndex];
+                nicknameEl.classList.remove('nickname-hidden');
+                nicknameEl.classList.add('nickname-visible');
+            }, 300);
+        }, 1000);
+
+        // OPEN LETTER FUNCTION
+        function openLetter() {
+            const letterDisplay = document.getElementById('letter-display');
+            const envelopeCard = document.getElementById('envelope-card');
+
+            if (letterDisplay) {
+                letterDisplay.classList.remove('hidden');
+                setTimeout(() => {
+                    letterDisplay.classList.remove('opacity-0', 'translate-y-4');
+                    letterDisplay.classList.add('opacity-100', 'translate-y-0');
+                }, 50);
+            }
+
+            if (envelopeCard) {
+                envelopeCard.classList.add('hidden');
+            }
+        }
+
+        // TIME SPENT TOGETHER COUNTER (START DATE: DEC 8, 2025)
+        const startDate = new Date('2025-12-08T00:00:00');
+
+        function updateCounter() {
+            const now = new Date();
+            let diff = Math.max(0, now - startDate);
+
+            const seconds = Math.floor((diff / 1000) % 60);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // CANVAS FLOATING HEARTS ANIMATION
+        const canvas = document.getElementById('heart-canvas');
+        const ctx = canvas ? canvas.getContext('2d') : null;
+
+        if (canvas && ctx) {
+            let width = (canvas.width = window.innerWidth);
+            let height = (canvas.height = window.innerHeight);
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const particles = [];
+            const particleCount = 25;
+
+            class HeartParticle {
+                constructor() {
+                    this.reset();
+                }
+
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = height + 20 + Math.random() * 50;
+                    this.size = Math.random() * 12 + 8;
+                    this.speedY = Math.random() * 1.2 + 0.6;
+                    this.speedX = Math.sin(Math.random() * Math.PI) * 0.8;
+                    this.opacity = Math.random() * 0.5 + 0.3;
+                    this.rotation = Math.random() * Math.PI * 2;
+                    this.rotSpeed = (Math.random() - 0.5) * 0.02;
+                }
+
+                update() {
+                    this.y -= this.speedY;
+                    this.x += Math.sin(this.y / 30) * 0.5;
+                    this.rotation += this.rotSpeed;
+
+                    if (this.y < -30) {
+                        this.reset();
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fillStyle = '#fb7185';
+                    ctx.beginPath();
+                    const topCurveHeight = this.size * 0.3;
+                    ctx.moveTo(0, topCurveHeight);
+                    ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+                    ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+                    ctx.bezierCurveTo(0, (this.size + topCurveHeight) / 2, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+                    ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new HeartParticle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach((p) => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>
