@@ -36,6 +36,12 @@
 </head>
 <body class="bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 min-h-screen text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-rose-200 selection:text-rose-900">
 
+    <!-- HIDDEN BACKGROUND AUDIO (NO GUI / NO VISIBLE PLAYER) -->
+    <!-- Make sure your audio file uploaded to GitHub is named "music.mp3" -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    
     <!-- CANVAS FLOATING HEARTS BACKGROUND -->
     <canvas id="heart-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
