@@ -32,10 +32,34 @@
             transition: all 0.3s ease-in-out;
             display: inline-block;
         }
+        /* Music disc spin (only while music is playing) */
+        @keyframes disc-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .disc-spinning {
+            animation: disc-spin 4s linear infinite;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 min-h-screen text-slate-800 flex flex-col justify-between relative overflow-x-hidden selection:bg-rose-200 selection:text-rose-900">
-    
+
+    <!-- HIDDEN BACKGROUND AUDIO (no visible player) -->
+    <!-- Upload your audio to GitHub in the same folder as index.html and name it "music.mp3" -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FLOATING TOP-RIGHT MUSIC BUTTON -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="music-toggle-btn" onclick="toggleAudio()" class="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-rose-200 shadow-lg text-rose-600 hover:bg-rose-50 transition-all duration-300">
+            <span id="music-icon" class="flex items-center justify-center">
+                <i data-lucide="disc" class="w-5 h-5 text-rose-500"></i>
+            </span>
+            <span id="music-status-text" class="text-xs font-semibold tracking-wide text-rose-700 hidden sm:inline">Play Music</span>
+        </button>
+    </div>
+
     <!-- CANVAS FLOATING HEARTS BACKGROUND -->
     <canvas id="heart-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
@@ -143,7 +167,51 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // NICKNAMES CYCLING
+        // ===== BACKGROUND MUSIC CONTROL =====
+        const bgMusic = document.getElementById('bg-music');
+        const musicStatusText = document.getElementById('music-status-text');
+        const musicIcon = document.getElementById('music-icon');
+        let musicPlaying = false;
+
+        function updateMusicUI() {
+            if (musicStatusText) musicStatusText.textContent = musicPlaying ? 'Pause Music' : 'Play Music';
+            if (musicIcon) musicIcon.classList.toggle('disc-spinning', musicPlaying);
+        }
+
+        function toggleAudio() {
+            if (!bgMusic) return;
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicPlaying = false;
+                updateMusicUI();
+            } else {
+                bgMusic.volume = 0.6; // 0.0 to 1.0
+                bgMusic.play().then(() => {
+                    musicPlaying = true;
+                    updateMusicUI();
+                }).catch((err) => console.log('Playback blocked or music.mp3 not found:', err));
+            }
+        }
+
+        // Browsers block autoplay, so start the music on the first tap/click anywhere
+        function startMusicOnFirstTouch(e) {
+            if (e.target.closest('#music-toggle-btn')) return; // the button handles itself
+            if (!musicPlaying && bgMusic) {
+                bgMusic.volume = 0.6;
+                bgMusic.play().then(() => {
+                    musicPlaying = true;
+                    updateMusicUI();
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', startMusicOnFirstTouch);
+            document.removeEventListener('touchstart', startMusicOnFirstTouch);
+        }
+        document.addEventListener('click', startMusicOnFirstTouch);
+        document.addEventListener('touchstart', startMusicOnFirstTouch);
+
+        updateMusicUI();
+
+        // ===== NICKNAMES CYCLING =====
         const nicknames = ['Love', 'Lablab', 'Babi', 'Wifey', 'Lovey', 'Honey', 'Mommy 😩'];
         let nicknameIndex = 0;
         const nicknameEl = document.getElementById('dynamic-nickname');
@@ -161,7 +229,7 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
             }, 300);
         }, 1000);
 
-        // OPEN LETTER FUNCTION
+        // ===== OPEN LETTER FUNCTION =====
         function openLetter() {
             const letterDisplay = document.getElementById('letter-display');
             const envelopeCard = document.getElementById('envelope-card');
@@ -179,7 +247,7 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
             }
         }
 
-        // TIME SPENT TOGETHER COUNTER (START DATE: DEC 8, 2025)
+        // ===== TIME SPENT TOGETHER COUNTER (START DATE: DEC 8, 2025) =====
         const startDate = new Date('2025-12-08T00:00:00');
 
         function updateCounter() {
@@ -200,7 +268,7 @@ Panis i made this website for you hehehehe I just wanna say na thank you sa laha
         setInterval(updateCounter, 1000);
         updateCounter();
 
-        // CANVAS FLOATING HEARTS ANIMATION
+        // ===== CANVAS FLOATING HEARTS ANIMATION =====
         const canvas = document.getElementById('heart-canvas');
         const ctx = canvas ? canvas.getContext('2d') : null;
 
