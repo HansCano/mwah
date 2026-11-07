@@ -41,6 +41,16 @@
     <audio id="bg-music" loop preload="auto">
         <source src="music.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- FLOATING TOP-RIGHT MUSIC GUI CONTROL BUTTON -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="music-toggle-btn" onclick="toggleAudio()" class="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-rose-200 shadow-lg text-rose-600 hover:bg-rose-50 transition-all duration-300 group">
+            <span id="music-icon" class="relative flex items-center justify-center">
+                <i data-lucide="disc" class="w-5 h-5 text-rose-500 animate-spin" style="animation-duration: 4s;"></i>
+            </span>
+            <span id="music-status-text" class="text-xs font-semibold tracking-wide text-rose-700 hidden sm:inline">Play Music</span>
+        </button>
+    </div>
     
     <!-- CANVAS FLOATING HEARTS BACKGROUND -->
     <canvas id="heart-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
